@@ -24,10 +24,8 @@ class AlienInvasion:
 		"""Rozpoczęcie pętli głównej gry."""
 		while True:
 			self._check_events()
+			self.ship.update()
 			self._update_screen()
-			#Odświeżenie ekrantu w trakacie każdej iteracji pętli.
-			self.screen.fill(self.settings.bg_color)
-			self.ship.blitme()
 
 			#Wyświetlanie ostatnio zmodyfikowanego ekranu.
 			pygame.display.flip()
@@ -37,9 +35,14 @@ class AlienInvasion:
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				sys.exit()
+			elif event.type == pygame.KEYDOWN:
+				if event.key == pygame.K_RIGHT:
+					self.ship.moving_right = True
+			elif event.type == pygame.KEYUP:
+				if event.key == pygame.K_RIGHT:
+					self.ship.moving_right = False
 
 	def _update_screen(self):
-
 		"""Uaktualnienie obrazów na ekranie i przejście do nowego ekranu."""
 		self.screen.fill(self.settings.bg_color)
 		self.ship.blitme()
