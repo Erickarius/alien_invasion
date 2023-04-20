@@ -16,7 +16,7 @@ class Bullet(Sprite):
 		#zdefiniowanie dla niego odpowiedniego położenia.
 		self.rect = pygame.Rect(0, 0, self.settings.bullet_width,
 			self.settings.bullet_height)
-		self.rect_midtop = ai_game.ship.rect.midtop
+		self.rect.midtop = ai_game.ship.rect.midtop
 
 		#Położenie pocisku jest zdefiniowane za pomocą wartości 
 		#zmiennoprzecinkowej.
@@ -31,5 +31,5 @@ class Bullet(Sprite):
 
 	def draw_bullet(self):
 		"""Wyświetlanie pocisku na ekranie."""
-		pygame.draw.rect(self.screen, self.color.self.rect)
+		pygame.draw.rect(self.screen, self.color, self.rect)
 
