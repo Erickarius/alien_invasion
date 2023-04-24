@@ -81,8 +81,10 @@ class AlienInvasion:
 			if bullet.rect.bottom <= 0:
 				self.bullets.remove(bullet)
 
-		#Sprawdzenie, czy którykolwiek pocisk trafił obcego.
-		#Jeżeli tak, usuwamy zarówno pocisk, jak i obcego
+		self._check_bullet_alien_collisions()
+
+	def _check_bullet_alien_collisions(self):
+		#Usunięcie wszystkich pocisków i obcych, między którymi doszło do kolizji.
 		collisions = pygame.sprite.groupcollide(self.bullets, self.aliens,
 			True, True)
 
@@ -96,6 +98,10 @@ class AlienInvasion:
 		uaktualnienie położenia wszystkich obcych we flocie."""
 		self._check_fleet_edges()
 		self.aliens.update()
+
+		#Wykrywanie kolizji między obcym i statkiem
+		if pygame.sprite.spritecollideany(self.ship, self.aliens):
+			print("Statek został trafiony!!!")
 
 	def _create_fleet(self):
 		"""Utworzenie pełnej floty obcych."""
