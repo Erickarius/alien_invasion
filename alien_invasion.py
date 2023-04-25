@@ -5,6 +5,7 @@ import pygame
 
 from settings import Settings
 from game_stats import GameStats
+from button import Button
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
@@ -30,11 +31,14 @@ class AlienInvasion:
 
  		self._create_fleet()
 
+ 		#Utworzenie przycisku Start.
+ 		self.play_button = Button(self, self.screen, "Start")
+
 	def run_game(self):
 		"""Rozpoczęcie pętli głównej gry."""
 		while True:
 			self._check_events()
-			
+
 			if self.stats.game_active:
 				self.ship.update()
 				self._update_bullets()
@@ -52,6 +56,15 @@ class AlienInvasion:
 
 			elif event.type == pygame.KEYUP:
 				self._check_keyup_events(event)
+			elif event.type == pygame.MOUSEBUTTONDOWN:
+				mouse_pos = pygame.mouse.get_pos()
+				self._check_play_button(mouse_pos)
+
+	def _check_play_button(self, mouse_pos):
+		"""Rozpoczęcie nowej gry po kliknięciu przycisku Start przez 
+		użytkownika."""
+		if self.play_button.rect.collidepoint(mouse_pos):
+			self.stats.game_active = True
 
 	def _check_keydown_events(self, event):
 		"""Reakcja na naciśnięcie klawisza."""
@@ -191,6 +204,10 @@ class AlienInvasion:
 		for bullet in self.bullets.sprites():
 			bullet.draw_bullet()
 		self.aliens.draw(self.screen)
+
+		#Wyświetlanie przycisku tylko wtedy, gdy gra jest nieaktywna.
+		if not self.stats.game_active:
+			self.play_button.draw_button()
 
 		pygame.display.flip()
 
