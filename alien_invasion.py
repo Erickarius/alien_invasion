@@ -63,8 +63,22 @@ class AlienInvasion:
 	def _check_play_button(self, mouse_pos):
 		"""Rozpoczęcie nowej gry po kliknięciu przycisku Start przez 
 		użytkownika."""
-		if self.play_button.rect.collidepoint(mouse_pos):
+		button_clicked = self.play_button.rect.collidepoint(mouse_pos)
+		if button_clicked and not self.stats.game_active:
+			#Wyzerowanie danych statystycznych gry.
+			self.stats.reset_stats()
 			self.stats.game_active = True
+
+			#Usunięcie zawartości listy aliens i bullets.
+			self.aliens.empty()
+			self.bullets.empty()
+
+			#Utworzenie nowej floty i wyrśrodkowanie statku.
+			self._create_fleet()
+			self.ship.center_ship()
+
+			#Ukrycie kursora myszy.
+			pygame.mouse.set_visible(False)
 
 	def _check_keydown_events(self, event):
 		"""Reakcja na naciśnięcie klawisza."""
@@ -144,6 +158,7 @@ class AlienInvasion:
 
 		else:
 			self.stats.game_active = False
+			pygame.mouse.set_visible(True)
 
 	def _check_alien_bottom(self):
 		"""Sprawdzanie, czy którykolwiek obcy dotarł do dolnej krawędzi ekranu"""
