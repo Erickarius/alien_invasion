@@ -65,6 +65,8 @@ class AlienInvasion:
 		użytkownika."""
 		button_clicked = self.play_button.rect.collidepoint(mouse_pos)
 		if button_clicked and not self.stats.game_active:
+			#Wyzerowanie ustawień dotyczących gry.
+			self.settings.initialize_dynamic_settings()
 			#Wyzerowanie danych statystycznych gry.
 			self.stats.reset_stats()
 			self.stats.game_active = True
@@ -125,6 +127,7 @@ class AlienInvasion:
 			#Pozbycie się istniejących pocisków i utworzenie nowej floty
 			self.bullets.empty()
 			self._create_fleet()
+			self.settings.increase_speed()
 
 	def _update_aliens(self):
 		"""Sprawdzenie, czy flota obcych znajduje się przy krawędzi, a następnie
