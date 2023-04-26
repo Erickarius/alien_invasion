@@ -128,7 +128,8 @@ class AlienInvasion:
 		collisions = pygame.sprite.groupcollide(self.bullets, self.aliens,
 			True, True)
 		if collisions:
-			self.stats.score += self.settings.alien_points
+			for aliens in collisions.values():
+				self.stats.score += self.settings.alien_points *len(aliens  )
 			self.sb.prep_score() 
 
 		if not self.aliens:
@@ -172,7 +173,7 @@ class AlienInvasion:
 			pygame.mouse.set_visible(True)
 
 	def _check_alien_bottom(self):
-		"""Sprawdzanie, czy którykolwiek obcy dotarł do dolnej krawędzi ekranu"""
+		"""Sprawdzanie, czy którykolwiek obcy dotarł do dolnej krawędzi ekranu""" 
 		screen_rect = self.screen.get_rect()
 		for alien in self.aliens.sprites():
 			if alien.rect.bottom >= screen_rect.bottom:
