@@ -36,7 +36,7 @@ class AlienInvasion:
  		self._create_fleet()
 
  		#Utworzenie przycisku Start.
- 		self.play_button = Button(self, self.screen, "Start")
+ 		self.play_button = Button(self, self.screen, "Start")  
 
 	def run_game(self):
 		"""Rozpoczęcie pętli głównej gry."""
@@ -131,6 +131,7 @@ class AlienInvasion:
 			for aliens in collisions.values():
 				self.stats.score += self.settings.alien_points *len(aliens  )
 			self.sb.prep_score() 
+			self.sb.check_high_score()
 
 		if not self.aliens:
 			#Pozbycie się istniejących pocisków i utworzenie nowej floty
