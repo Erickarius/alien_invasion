@@ -76,6 +76,7 @@ class AlienInvasion:
 			self.stats.game_active = True
 			self.sb.prep_score()
 			self.sb.prep_level()
+			self.sb.prep_ships()
 
 			#Usunięcie zawartości listy aliens i bullets.
 			self.aliens.empty()
@@ -161,7 +162,9 @@ class AlienInvasion:
 		"""Reakcja na uderzenie obcego w statek."""
 		if self.stats.ships_left > 0:
 			#Zmniejszenie wartości przechowywanej w ships_lef.
+			#i aktualnej tablicy wyników
 			self.stats.ships_left -= 1
+			self.sb.prep_ships()
 
 			#Usunięcie zawartości list aliens i bullets.
 			self.aliens.empty()
