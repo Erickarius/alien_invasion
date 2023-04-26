@@ -75,6 +75,7 @@ class AlienInvasion:
 			self.stats.reset_stats()
 			self.stats.game_active = True
 			self.sb.prep_score()
+			self.sb.prep_level()
 
 			#Usunięcie zawartości listy aliens i bullets.
 			self.aliens.empty()
@@ -138,6 +139,10 @@ class AlienInvasion:
 			self.bullets.empty()
 			self._create_fleet()
 			self.settings.increase_speed()
+
+			#Inkrementacja numeru poziomu.
+			self.stats.level += 1
+			self.sb.prep_level()
 
 	def _update_aliens(self):
 		"""Sprawdzenie, czy flota obcych znajduje się przy krawędzi, a następnie
