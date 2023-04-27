@@ -27,3 +27,23 @@ The controls in "Alien Invasion" are simple and are done using the keyboard. Her
 - Left arrow - the spacecraft moves to the left
 - Right arrow - the spacecraft moves to the right
 - Space - fire
+
+## Screenshots
+
+![alien_invasion_screen_3](https://user-images.githubusercontent.com/117024079/234897573-aea2704b-df7c-4ae6-8043-a1b5851704b3.png)
+
+![alien_invasion_screen_1](https://user-images.githubusercontent.com/117024079/234897690-2035e043-5009-4a47-be28-a2f4db4819a9.png)
+
+![alien_invasion_screen_2](https://user-images.githubusercontent.com/117024079/234897858-98f12795-f6a2-4ab4-a6c8-9c36cb2a78ca.png)
+
+## Video
+
+
+https://user-images.githubusercontent.com/117024079/234898419-f3880363-5c81-4281-805b-1641e100c03c.mp4
+
+
+https://user-images.githubusercontent.com/117024079/234899322-647902a4-8255-497f-bb1b-e16925264c61.mp4
+
+
+
+
