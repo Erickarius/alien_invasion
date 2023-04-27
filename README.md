@@ -10,8 +10,9 @@ This project was created based on the project included in Eric Matthes' book "Py
 The project can be installed in the traditional way by cloning the repository. 
 For example:
 
-git clone https://github.com/Erickarius/alien_invasion.git
-cd alien_invasion
+`git clone https://github.com/Erickarius/alien_invasion.git`
+
+`cd alien_invasion`
 
 Alternatively, the project can be installed using an installation file available at this [link](https://drive.google.com/file/d/17_JfBJmb9s9pMbklkumh1Uusz9CR45v1/view).
 
